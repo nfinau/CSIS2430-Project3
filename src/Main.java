@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * Team Name: Naomi
  * Team Members: Naomi Finau
@@ -5,43 +7,67 @@
  * Project: Programming Project 3 - The Knapsack Problem
  * Primary Author: Naomi Finau 
  *
- * Represents one experiment payload with a name, weight, and rating.
+ * Runs all required project outputs:
+ * 1. Three greedy strategies
+ * 2. Brute-force optimal
+ * 3. Comparison summary
+ * 4. Dynamic programming optimal (extra credit)
  */
-public class Payload {
-    private final int id;
-    private final String name;
-    private final int weight;
-    private final int rating;
+public class Main {
+    public static void main(String[] args) {
+        List<Payload> payloads = KnapsackSolver.buildDefaultPayloads();
 
-    public Payload(int id, String name, int weight, int rating) {
-        this.id = id;
-        this.name = name;
-        this.weight = weight;
-        this.rating = rating;
-    }
+        KnapsackResult highestRating = KnapsackSolver.greedyHighestRatingFirst(payloads);
+        KnapsackResult lightest = KnapsackSolver.greedyLightestFirst(payloads);
+        KnapsackResult bestRatio = KnapsackSolver.greedyBestRatioFirst(payloads);
 
-    public int getId() {
-        return id;
-    }
+        long bruteStart = System.nanoTime();
+        List<KnapsackResult> topThree = KnapsackSolver.bruteForceTopThree(payloads);
+        KnapsackResult bruteForceOptimal = topThree.get(0);
+        long bruteEnd = System.nanoTime();
 
-    public String getName() {
-        return name;
-    }
+        long dpStart = System.nanoTime();
+        KnapsackResult dpOptimal = KnapsackSolver.dynamicProgrammingOptimal(payloads);
+        long dpEnd = System.nanoTime();
 
-    public int getWeight() {
-        return weight;
-    }
+        System.out.println("==========================================");
+        System.out.println("PROJECT 3 - THE KNAPSACK PROBLEM");
+        System.out.println("==========================================");
+        System.out.println();
 
-    public int getRating() {
-        return rating;
-    }
+        highestRating.printDetailed();
+        lightest.printDetailed();
+        bestRatio.printDetailed();
 
-    public double getRatio() {
-        return (double) rating / weight;
-    }
+        System.out.println("==========================================");
+        System.out.println("BRUTE FORCE OPTIMAL");
+        System.out.println("==========================================");
+        bruteForceOptimal.printDetailed();
 
-    @Override
-    public String toString() {
-        return "#" + id + " " + name + " (weight=" + weight + ", rating=" + rating + ")";
+        KnapsackSolver.printTopThree(topThree);
+
+        System.out.println("==========================================");
+        System.out.println("DYNAMIC PROGRAMMING OPTIMAL (EXTRA CREDIT)");
+        System.out.println("==========================================");
+        dpOptimal.printDetailed();
+
+        KnapsackSolver.printComparisonSummary(
+            highestRating,
+            lightest,
+            bestRatio,
+            bruteForceOptimal,
+            dpOptimal
+        );
+
+        System.out.println("==========================================");
+        System.out.println("RUNTIME COMPARISON");
+        System.out.println("==========================================");
+        System.out.println("Brute Force runtime (ns): " + (bruteEnd - bruteStart));
+        System.out.println("Dynamic Programming runtime (ns): " + (dpEnd - dpStart));
+        System.out.println();
+        System.out.println("Expected answer notes:");
+        System.out.println("- Brute force gives the true optimal subset.");
+        System.out.println("- Dynamic programming should match brute force.");
+        System.out.println("- Greedy methods may or may not match the optimal subset.");
     }
 }
