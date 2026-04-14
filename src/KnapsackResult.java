@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Team Name: Naomi
  * Team Members: Naomi Finau
- * Course: CS 2430
+ * Course: CSIS 2430
  * Project: Programming Project 3 - The Knapsack Problem
  * Primary Author: Naomi Finau 
  *
