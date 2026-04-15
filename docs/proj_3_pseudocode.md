@@ -2,7 +2,6 @@
 
 ## Team Information
 - Naomi Finau (Implementations Lead, Verification Lead, Communications Lead)
-- 
 ---
 
 ## Overview
