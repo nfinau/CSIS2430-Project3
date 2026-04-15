@@ -1,10 +1,8 @@
 # Pseudocode – Programming Project 3 (Knapsack Problem)
 
 ## Team Information
-- Naomi Finau (Verification Lead)
-- Noah Kolling (Implementation Lead)
-- Jackson (No participation)
-
+- Naomi Finau (Implementations Lead, Verification Lead, Communications Lead)
+- 
 ---
 
 ## Overview
