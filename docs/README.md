@@ -19,3 +19,16 @@ I implemented and compared multiple algorithmic strategies:
 ---
 
 ## Repository Structure
+/src
+Main.java
+Payload.java
+KnapsackSolver.java
+KnapsackResult.java
+
+/docs
+README.md
+proj_3_plan.md
+proj_3_pseudocode.md
+test_plan.md
+test_results.md
+knapsack_output.png
