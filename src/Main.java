@@ -11,7 +11,7 @@ import java.util.List;
  * 1. Three greedy strategies
  * 2. Brute-force optimal
  * 3. Comparison summary
- * 4. Dynamic programming optimal (extra credit)
+ * 4. Dynamic programming optimal 
  */
 public class Main {
     public static void main(String[] args) {
